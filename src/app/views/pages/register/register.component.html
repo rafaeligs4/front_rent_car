@@ -1,0 +1,101 @@
+<div class="bg-light min-vh-100 d-flex flex-row align-items-center">
+  <c-container>
+    <c-row class="justify-content-center">
+      <c-col lg="7" md="9" xl="6">
+        <c-card class="mx-4">
+          <c-card-body class="p-4">
+            <form cForm [formGroup]="formRegister">
+              <h1>Register</h1>
+              <p class="text-medium-emphasis">Create your account</p>
+              <c-input-group class="mb-3">
+                <span cInputGroupText>
+                  <svg cIcon name="cilUser"></svg>
+                </span>
+                <input  [valid]="isPristineAndValid('name')" autoComplete="name"
+                formControlName="name"
+                cFormControl placeholder="Username" />
+                <c-form-feedback [valid]="false" 
+                *ngIf="!isPristineAndValid('name')"
+                >{{messageError("name")}}.</c-form-feedback>
+
+              </c-input-group>
+              <c-input-group class="mb-3">
+                <span cInputGroupText>@</span>
+                <input autoComplete="email" 
+                [valid]="isPristineAndValid('email')"
+                formControlName="email"
+                cFormControl placeholder="Email" />
+                <c-form-feedback [valid]="false" 
+                *ngIf="!isPristineAndValid('email')"
+                >{{messageError("email")}}</c-form-feedback>
+              </c-input-group>
+              <c-input-group class="mb-3"
+             
+              >
+                <select class="form-select form-select-lg mb-3" cSelect 
+                [valid]="isPristineAndValid('rol')"
+                formControlName="rol"
+                aria-label=".form-select-lg example">
+                  <option selected value="">Selecciona un rol</option>
+                  <option value="vendedor">Vendedor</option>
+                  <option value="cliente">Cliente</option>
+                </select>
+                <c-form-feedback [valid]="false" 
+                *ngIf="!isPristineAndValid('rol')"
+                >{{messageError("rol")}}</c-form-feedback>
+              </c-input-group>
+              <c-input-group class="mb-3">
+                <span cInputGroupText>
+                  <svg cIcon name="cilLockLocked"></svg>
+                </span>
+                <input
+                [valid]="isPristineAndValid('password')"
+                autoComplete="new-password"
+                formControlName="password"
+                cFormControl placeholder="Password" type="password" />
+
+                <c-form-feedback [valid]="false" 
+                *ngIf="!isPristineAndValid('password')"
+                >{{messageError("password")}}</c-form-feedback>
+                </c-input-group>
+              <c-input-group class="mb-4">
+                <span cInputGroupText>
+                  <svg cIcon name="cilLockLocked"></svg>
+                </span>
+                <input 
+                formControlName="repeatPassword"
+                [valid]="isPristineAndValid('repeatPassword')"
+                autoComplete="new-password" cFormControl placeholder="Repeat password" type="password" />
+                <c-form-feedback [valid]="false" 
+                *ngIf="!isPristineAndValid('repeatPassword')"
+                >{{messageError("repeatPassword")}}</c-form-feedback>
+              </c-input-group>
+              <div class="d-grid">
+                <button cButton color="success"
+                [disabled]="formRegister.invalid"
+                (click)="sumbit()"
+                >Create Account</button>
+            
+              </div>
+            </form>
+          </c-card-body>
+        </c-card>
+      </c-col>
+       
+    </c-row>
+    <c-modal 
+    id="liveDemoModal" [visible]="visible" (visibleChange)="handleLiveDemoChange($event)">
+      <c-modal-header>
+        <h5 cModalTitle>Mensaje</h5>
+        <button (click)="toggleLiveDemo()" cButtonClose></button>
+      </c-modal-header>
+      <c-modal-body>{{message}}</c-modal-body>
+      <c-modal-footer>
+        <button (click)="toggleLiveDemo()" cButton color="secondary">
+          Close
+        </button>
+        
+      </c-modal-footer>
+    </c-modal>
+  </c-container>
+</div>
