@@ -37,8 +37,6 @@ export class RegisterComponent implements OnInit{
   },{ validators: [this.vs.validatePassword('password','repeatPassword')]});
   
   ngOnInit(): void {
-
-    console.log(this.authS.JWT);
   }
   
   public messageError(campo: string): string{
@@ -94,15 +92,15 @@ export class RegisterComponent implements OnInit{
         this.status=response.status!;
         this.message=response.message;
         this.toggleLiveDemo();
-        this.redirectToDashboard();
+        this.redirectToLogin();
       });
     }
     this.formRegister.reset();
   }
 
- private redirectToDashboard(){
+ private redirectToLogin(){
     setTimeout(()=>{
-      this.route.navigate(["dashboard"]);
+      this.route.navigate(["login"]);
     },3000)
    
   }

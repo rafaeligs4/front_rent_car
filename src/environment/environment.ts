@@ -1,4 +1,7 @@
 export const environment = {
         production : false,
-        url: "http://localhost:8080/api"
+        URI: "http://localhost:8080",
+        API_URI:"/api",
+        HEADER_AUTHORIZATION: "Authorization",
+        BEARER_AUTHORIZATION: "Bearer"
 }

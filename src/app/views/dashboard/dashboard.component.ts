@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 
 import { DashboardChartsData, IChartProps } from './dashboard-charts-data';
+import { ActivatedRoute, Router } from '@angular/router';
 
 interface IUser {
   name: string;
@@ -22,7 +23,10 @@ interface IUser {
   styleUrls: ['dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  constructor(private chartsData: DashboardChartsData) {
+  constructor(
+    private chartsData: DashboardChartsData,
+    private router: Router
+    ) {
   }
 
   public users: IUser[] = [
@@ -113,6 +117,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.initCharts();
+    console.log(this.router.url,"Route")
   }
 
   initCharts(): void {
