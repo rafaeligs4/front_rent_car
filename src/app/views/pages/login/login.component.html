@@ -12,19 +12,28 @@
                   <span cInputGroupText>
                     <svg cIcon name="cilUser"></svg>
                   </span>
-                  <input autoComplete="username" formControlName="email" cFormControl placeholder="Username" />
+                  <input
+                  [valid]="isPristineAndValid('email')"                  
+                  autoComplete="username" formControlName="email" cFormControl placeholder="Username" />
+                  <c-form-feedback [valid]="false"  
+                  *ngIf="!isPristineAndValid('email')"
+                  >{{messageError("email")}}.</c-form-feedback>
                 </c-input-group>
                 <c-input-group class="mb-4">
                   <span cInputGroupText>
                     <svg cIcon name="cilLockLocked"></svg>
                   </span>
                   <input
+                  [valid]="isPristineAndValid('password')"     
                   formControlName="password" 
                   autoComplete="current-password"
                     cFormControl
                     placeholder="Password"
                     type="password"
                   />
+                  <c-form-feedback [valid]="false" 
+                  *ngIf="!isPristineAndValid('password')"
+                  >{{messageError("password")}}.</c-form-feedback>
                 </c-input-group>
                 <c-row>
                   <c-col xs="6">
@@ -36,6 +45,11 @@
                     <button cButton class="px-0" color="link">
                       Forgot password?
                     </button>
+                  </c-col>
+                </c-row>
+                <c-row class="justify-content-center">
+                  <c-col >
+                    <span>Ola</span>
                   </c-col>
                 </c-row>
               </form>

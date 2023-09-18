@@ -42,8 +42,6 @@ export class AuthService {
     .pipe(map((response: HttpResponse<any>)=>{
       console.log(response);
       const header = response.headers;
-      
-      const body = response.body;
       const auth = header.get(environment.HEADER_AUTHORIZATION);
       if(auth){
         const token = auth.replace(environment.BEARER_AUTHORIZATION,"");
@@ -64,5 +62,9 @@ export class AuthService {
 
   public getToken():string{
     return localStorage.getItem("token")!;
+  }
+  public isAuthenticated(): boolean{
+   if(this.getToken()) return true;
+   return false;
   }
 }

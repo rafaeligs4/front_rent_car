@@ -9,7 +9,11 @@ import { RegisterComponent } from './views/pages/register/register.component';
 import { authGuard, userLoggedGuard } from './guards/auth.guard';
 
 const routes: Routes = [
- 
+ {
+  path: '',
+  redirectTo: 'login',
+  pathMatch: 'full'
+ },
   {
     path: '404',
     component: Page404Component,
